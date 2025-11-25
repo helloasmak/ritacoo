@@ -2,9 +2,18 @@
 <html><body style="background:#000;color:#ff00ff;text-align:center;padding-top:20%">
 <h1>⏳ Connexion à Semrush Guru…</h1>
 <script>
-fetch('https://ritacooo.vercel.app/api/token')
+fetch('/api/token')
   .then(r=>r.text())
-  .then(t=>{ localStorage.setItem("twk_token_68f671a128a7fd195a28d952", t); 
-            location.href="https://app.semrush.com/"; });
+  .then(t=>{ 
+    if(t){
+      localStorage.setItem("twk_token_68f671a128a7fd195a28d952", t); 
+      // Script magique pour cacher leur branding et mettre Ritaco
+      setTimeout(() => {
+        const banner = document.querySelector('[class*="using"], div:contains("brandseotools")');
+        if(banner) banner.innerHTML = 'You are using <strong style="color:#ff00ff;">Ritaco</strong> Semrush Guru Plan! 🔥';
+      }, 3000);
+      location.href="https://www.semrush.com/";  // ← L'URL CORRECTE ET FONCTIONNELLE
+    }
+  });
 </script>
 </body></html>
