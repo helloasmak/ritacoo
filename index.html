@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ritaco – Tous les outils SEO premium 2025</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    body{background:#000;color:#fff;font-family:Arial;text-align:center;padding:50px;line-height:1.6}
+    h1{color:#ff00ff;font-size:50px}
+    button{padding:20px 50px;font-size:24px;margin:20px;border:none;border-radius:15px;cursor:pointer}
+    .monthly{background:#ff00ff;color:#000}
+    .yearly{background:#00ff00;color:#000}
+  </style>
+</head>
+<body>
+  <h1>RITACO</h1>
+  <h2>Accès illimité à Semrush Guru, Ahrefs Enterprise, Moz, Majestic…</h2>
+  <p style="font-size:24px">1 clic → tout s’ouvre instantanément • Pas d’extension • Pas de compte à créer</p>
+  <br><br>
+  <button class="monthly" onclick="pay('price_1XXXXXX')">15$/mois</button>
+  <button class="yearly" onclick="pay('price_1YYYYYY')">99$/an <small style="color:#fff">(-45%)</small></button>
+
+  <script>
+    const stripe = Stripe('pk_test_51...'); // ← on mettra ta clé publique dans 2 min
+    function pay(id){
+      stripe.redirectToCheckout({
+        lineItems: [{price: id, quantity: 1}],
+        mode: 'subscription',
+        successUrl: window.location.origin + '/success.html',
+        cancelUrl: window.location.origin,
+      });
+    }
+  </script>
+</body>
+</html>
